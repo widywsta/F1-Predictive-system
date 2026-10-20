@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/style.css">
+    <title>F1 predictive app</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="app_name">F1 PREDICTIVE SYSTEM</h1>
+        <nav>
+            <ul>
+                <li><button class="nav_btn" id="strategy_window_btn" data-tab="strategy_window">Гоночные стратегии</button></li>
+                <li><button class="nav_btn" id="tyres_window_btn" data-tab="tyres_window">Ресурс шин</button></li>
+                <li><button class="nav_btn" id="text_window_btn" data-tab="text_window">Информация и понятия</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="window" id="strategy_window">
+            <h2 class="window_headline" id="strategy_headline">Варианты стратегий для данной трассы</h2>
+            <aside id="strategy_input">
+                <label for="track_input_strategy">Выберите трассу:</label>
+                <select name="tracks" id="track_input_strategy">
+                    <option value="Abu Dhabi Grand Prix">Гран-при Абу-Даби</option>
+                    <option value="Australian Grand Prix">Гран-при Австралии</option>
+                    <option value="Austrian Grand Prix">Гран-при Австрии</option>
+                    <option value="Azerbaijan Grand Prix">Гран-при Азербайджана</option>
+                    <option value="Bahrain Grand Prix">Гран-при Бахрейна</option>
+                    <option value="Belgian Grand Prix">Гран-при Бельгии</option>
+                    <option value="British Grand Prix" selected>Гран-при Великобритании</option>
+                    <option value="Canadian Grand Prix">Гран-при Канады</option>
+                    <option value="Chinese Grand Prix">Гран-при Китая</option>
+                    <option value="Dutch Grand Prix">Гран-при Нидерландов</option>
+                    <option value="Emilia Romagna Grand Prix">Гран-при Эмильи-Романии</option>
+                    <option value="Hungarian Grand Prix">Гран-при Венгрии</option>
+                    <option value="Italian Grand Prix">Гран-при Италии</option>
+                    <option value="Japanese Grand Prix">Гран-при Японии</option>
+                    <option value="Las Vegas Grand Prix">Гран-при Лас-Вегаса</option>
+                    <option value="Mexico City Grand Prix">Гран-при Мехико</option>
+                    <option value="Miami Grand Prix">Гран-при Майами</option>
+                    <option value="Monaco Grand Prix">Гран-при Монако</option>
+                    <option value="Qatar Grand Prix">Гран-при Катара</option>
+                    <option value="Saudi Arabian Grand Prix">Гран-при Саудовской Аравии</option>
+                    <option value="Singapore Grand Prix">Гран-при Сингапура</option>
+                    <option value="Spanish Grand Prix">Гран-при Испании</option>
+                    <option value="São Paulo Grand Prix">Гран-при Сан-Паулу</option>
+                    <option value="United States Grand Prix">Гран-при США</option>
+                </select>
+
+                <label for="input_safety_reserve">Коэффициент безопасности (0% - 100%):</label>
+                <input type="range" id="input_safety_reserve" min="0" max="3" value="2">
+
+                <button class="ready_go" id="run_strategy">Получить стратегии</button>
+            </aside>
+            <article id="strategy_output">
+                <div class="grand-prix_info">
+                    <header class="">--- ГРАН-ПРИ ---</header>
+                    <details class="text_articles_name">
+                        <summary>О гран-при:</summary>
+                        <article>
+                            <p>Введите гран-при для информации</p>
+                        </article>
+                    </details>
+                </div>
+
+                <ol id="strategies_list">
+                    <li class="strategy_variant">
+                        <h3 class="strategy_name">MEDIUM ➔ HARD ➔ SOFT</h3>
+        
+                        <div class="strategy_line">
+                        <div class="stint_segment medium" style="flex-grow: 16;" title="Стинт 1: MEDIUM (16 laps)">M</div>
+            
+                        <div class="stint_segment pit_window_segment medium-hard" style="flex-grow: 5;" title="Окно пит-стопа 1 1"></div>
+            
+                        <div class="stint_segment hard" style="flex-grow: 25;" title="Стинт 2: HARD (25 laps)">H</div>
+            
+                        <div class="stint_segment pit_window_segment hard-soft" style="flex-grow: 5;" title="Окно пит-стопа 2"></div>
+            
+                        <div class="stint_segment soft" style="flex-grow: 12;" title="Стинт 3: SOFT (12 laps)">S</div>
+                        </div>
+        
+                        <p class="pitstop_description">Пример стратегии: <br> Окна питстопов: Круг 16 (13-18) , Круг 41 (38-43) | Индекс безопасности: +2 кргуа в запасе</p>
+                    </li>
+                </ol>
+                <button class="ready_go" id="more_strategy" style="display: none;"></button>
+            </article>
+        </section>
+
+        <section class="window" id="tyres_window">
+            <h2 class="window_headline" id="tyre_headline">Ресурс шин</h2>
+            <p id="tyres_annotation">Ресурс шин для British Grand prix</p>
+
+            <label for="track_input_tyres">Выберите трассу:</label>
+            <select name="tracks" id="track_input_strategy">
+                    <option value="Abu Dhabi Grand Prix">Гран-при Абу-Даби</option>
+                    <option value="Australian Grand Prix">Гран-при Австралии</option>
+                    <option value="Austrian Grand Prix">Гран-при Австрии</option>
+                    <option value="Azerbaijan Grand Prix">Гран-при Азербайджана</option>
+                    <option value="Bahrain Grand Prix">Гран-при Бахрейна</option>
+                    <option value="Belgian Grand Prix">Гран-при Бельгии</option>
+                    <option value="British Grand Prix" selected>Гран-при Великобритании</option>
+                    <option value="Canadian Grand Prix">Гран-при Канады</option>
+                    <option value="Chinese Grand Prix">Гран-при Китая</option>
+                    <option value="Dutch Grand Prix">Гран-при Нидерландов</option>
+                    <option value="Emilia Romagna Grand Prix">Гран-при Эмильи-Романии</option>
+                    <option value="Hungarian Grand Prix">Гран-при Венгрии</option>
+                    <option value="Italian Grand Prix">Гран-при Италии</option>
+                    <option value="Japanese Grand Prix">Гран-при Японии</option>
+                    <option value="Las Vegas Grand Prix">Гран-при Лас-Вегаса</option>
+                    <option value="Mexico City Grand Prix">Гран-при Мехико</option>
+                    <option value="Miami Grand Prix">Гран-при Майами</option>
+                    <option value="Monaco Grand Prix">Гран-при Монако</option>
+                    <option value="Qatar Grand Prix">Гран-при Катара</option>
+                    <option value="Saudi Arabian Grand Prix">Гран-при Саудовской Аравии</option>
+                    <option value="Singapore Grand Prix">Гран-при Сингапура</option>
+                    <option value="Spanish Grand Prix">Гран-при Испании</option>
+                    <option value="São Paulo Grand Prix">Гран-при Сан-Паулу</option>
+                    <option value="United States Grand Prix">Гран-при США</option>
+                </select>
+
+            <button class="ready_go" id="run_tyres_analyse" style="margin-left: 15px;">Анализ ресурса шин</button>
+
+            <div class="tyres_container">
+                <figure class="tyre_resault" id="soft_tyre_resault">
+                    <figcaption class="tyre_resault_description" id="soft_tyre_res_desc">SOFT</figcaption>
+                    <p class="tyre_res_km" id="soft_tyre_res_km">74 км</p>
+                    <p class="tyre_res_laps" id="soft_tyre_res_laps">14 кругов</p>
+                </figure>
+
+                <figure class="tyre_resault" id="medium_tyre_resault">
+                    <figcaption class="tyre_resault_description" id="medium_tyre_res_desc">MEDIUM</figcaption>
+                    <p class="tyre_res_km" id="medium_tyre_res_km">122 км</p>
+                    <p class="tyre_res_laps" id="medium_tyre_res_laps">23 кругов</p>
+                </figure>
+
+                <figure class="tyre_resault" id="hard_tyre_resault">
+                    <figcaption class="tyre_resault_description" id="hard_tyre_res_desc">HARD</figcaption>
+                    <p class="tyre_res_km" id="hard_tyre_res_km">175 км</p>
+                    <p class="tyre_res_laps" id="hard_tyre_res_laps">33 кругов</p>
+                </figure>
+            </div>
+        </section>
+
+        <section class="window" id="text_window">
+            <h2 class="window_headline" id="text_headline">Основные термины и понятия</h2>
+            <div class="accordion_container">
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum">1. Деградация шин</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            <strong>Деградация шин</strong> — это постепенная потеря сцепления резины с асфальтом из-за химического старения от высоких температур и механического износа. 
+                            <br><br>
+                            В Формуле-1 этот процесс имеет критическую точку, называемую <strong>"Cliff" (Обрыв)</strong>. При достижении этого порога резина «умирает» лавинообразно: темп гонщика внезапно падает на 1.5–2.5 секунды с круга. Математический фильтр нашего бэкенда рассчитывает километраж деградации так, чтобы гоночный инженер успел зазвать пилота на пит-стоп строго ДО наступления этого эффекта.
+                        </p>
+                    </article>
+                </details>
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum">2. Что такое Пит-стоп?</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            <strong>Пит-стоп</strong> — это техническая остановка болида в боксах команды во время гонки. Согласно правилам FIA, во время сухой гонки каждый пилот обязан совершить минимум один пит-стоп и использовать как минимум два разных состава резины. 
+                            <br><br>
+                            Бригада из 20 механиков меняет все 4 колеса менее чем за 2 секунды (мировой рекорд — 1.80 сек). Однако с учетом замедления на пит-лейне пилот теряет на этой остановке от 20 до 25 секунд «грязного времени» в зависимости от трассы. Модель оптимизирует окна заездов так, чтобы эта потеря времени компенсировалась высокой скоростью на свежих шинах.
+                        </p>
+                    </article>
+                </details>
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum">3. Составы гоночных шин</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            Сухие шины (слики) Pirelli делятся на три базовых типа, каждый из которых имеет свои уникальные характеристики:
+                            <br><br>
+                            <strong>SOFT (Мягкие):</strong> Обеспечивают максимальное сцепление и наивысший темп, но разрушаются быстрее всего. Идеальны для квалификаций и коротких финальных отрезков.
+                            <br>
+                            <strong>MEDIUM (Средние):</strong> Сбалансированный состав, сочетающий хорошую скорость и оптимальную выносливость. Основа большинства гоночных стратегий.
+                            <br>
+                            <strong>HARD (Жесткие):</strong> Самый прочный состав. Прогревается дольше остальных и уступает в темпе, но способен выдерживать огромные дистанции. Спасательный круг для трасс с грубым асфальтом (Сильверстоун, Спа).
+                        </p>
+                    </article>
+                </details>
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum">4. Стратегия Андерката</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            <strong>Андеркат (Undercut)</strong> — это тактический прием, при котором гонщик заезжает на пит-стоп на 1–3 круга РАНЬШЕ прямого конкурента, идущего впереди. 
+                            <br><br>
+                            Выезжая на свежем, прогретом комплекте шин, преследователь получает колоссальное преимущество в скорости над соперником, который все еще едет на изношенной резине. За счет этого темпа пилот успевает обойти конкурента в тот момент, когда тот кругом позже совершает свой пит-стоп. Этот прием невероятно эффективен на трассах с высоким износом (Бахрейн, Барселона).
+                        </p>
+                    </article>
+                </details>
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum">5. Стратегия Оверката</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            <strong>Оверкат (Overcut)</strong> — зеркальный тактический прием, при котором пилот остается на трассе ДОЛЬШЕ своего соперника, ушедшего на пит-стоп. 
+                            <br><br>
+                            Оверкат работает в двух случаях: когда старая резина на болиде лидера еще способна держать хороший темп, а выехавший на свежих шинах соперник увязает в трафике или долго прогревает резину. Пока преследователь теряет время, лидер штампует быстрые круги на пустых баках и после своего пит-стопа сохраняет позицию. Классические примеры эффективного оверката — Монако и Сингапур.
+                        </p>
+                    </article>
+                </details>
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum">6. Эффект "Грязного воздуха"</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            <strong>Грязный воздух (Dirty Air)</strong> — это мощный турбулентный след, который оставляет за собой гоночный болид на высокой скорости. 
+                            <br><br>
+                            Машина преследователя, попадая в эту зону, теряет до 30-40% прижимной силы из-за нехватки чистого воздушного потока на крыльях. Болид начинает сильно скользить в поворотах, из-за чего верхний слой шин перегревается и сгорает на треть быстрее. Именно существованием «грязного воздуха» обусловлена необходимость создания нашего математического фильтра трафика в бэкенде.
+                        </p>
+                    </article>
+                </details>
+
+                <details class="text_articles_name">
+                    <summary class="text_articles_sum"> 7. Гранулирование резины</summary>
+                    <article class="text_articles_info">
+                        <p class="text_articles_text">
+                            <strong>Гранулирование (Graining)</strong> — это физический феномен, при котором от перегрева и скольжения от протектора шины отрываются крошечные кусочки резины. Под воздействием центробежной силы они не отлетают, а мгновенно привариваются обратно к горячей шине, образуя шероховатую корку из катышков. 
+                            <br><br>
+                            Пятно контакта с асфальтом резко сокращается, и пилот начинает чувствовать, что едет «по льду». Через несколько кругов, когда этот налет истирается, сцепление может вернуться, но темп на этих кругах сильно страдает. Наш бэкенд умеет распознавать временные завалы темпа от гранулирования с помощью скользящего окна вперед на 2 круга.
+                        </p>
+                    </article>
+                </details>
+
+            </div>
+        </section>
+
+    </main>
+    <!-- <footer>
+        <details>
+            <summary>Контакты</summary>
+            <h3>Швырева Ксения 10А</h3>
+            <p>Телеграм: +7-(985)-686-41-25</p>
+            <p>IT вертикаль 2026</p>
+        </details>
+        <p></p>
+    </footer> -->
+
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
