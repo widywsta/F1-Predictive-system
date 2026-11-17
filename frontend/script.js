@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     runTyresBtn.addEventListener("click", async () => {
         const selectedTrack = trackTyresSelect.value;
+        console.log('click');
+        
 
         runTyresBtn.innerText = "Анализируем...";
         runTyresBtn.disabled = true;
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch(`http://localhost:8080/api/predict?track=${encodeURIComponent(selectedTrack)}&safety=2`);
             const data = await response.json();
+            
 
             if (data.status === "success") {
                 document.getElementById("tyres_annotation").innerText = `Ресурс шин для ${selectedTrack}:`;
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 document.getElementById("hard_tyre_res_km").innerText = `${Math.round(data.tyre_laps.HARD * data.lap_len)} км`;
                 document.getElementById("hard_tyre_res_laps").innerText = `${data.tyre_laps.HARD} кругов`;
+                
             } else {
                 alert("Ошибка бэкенда: " + data.message);
             }
@@ -128,14 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     strategiesList.appendChild(li);
                 });
 
-                document.getElementById("soft_tyre_res_km").innerText = `${Math.round(data.tyre_laps.SOFT * data.lap_len)} км`;
-                document.getElementById("soft_tyre_res_laps").innerText = `${data.tyre_laps.SOFT} кругов`;
+                // document.getElementById("soft_tyre_res_km").innerText = `${Math.round(data.tyre_laps.SOFT * data.lap_len)} км`;
+                // document.getElementById("soft_tyre_res_laps").innerText = `${data.tyre_laps.SOFT} кругов`;
                 
-                document.getElementById("medium_tyre_res_km").innerText = `${Math.round(data.tyre_laps.MEDIUM * data.lap_len)} км`;
-                document.getElementById("medium_tyre_res_laps").innerText = `${data.tyre_laps.MEDIUM} кругов`;
+                // document.getElementById("medium_tyre_res_km").innerText = `${Math.round(data.tyre_laps.MEDIUM * data.lap_len)} км`;
+                // document.getElementById("medium_tyre_res_laps").innerText = `${data.tyre_laps.MEDIUM} кругов`;
                 
-                document.getElementById("hard_tyre_res_km").innerText = `${Math.round(data.tyre_laps.HARD * data.lap_len)} км`;
-                document.getElementById("hard_tyre_res_laps").innerText = `${data.tyre_laps.HARD} кругов`;
+                // document.getElementById("hard_tyre_res_km").innerText = `${Math.round(data.tyre_laps.HARD * data.lap_len)} км`;
+                // document.getElementById("hard_tyre_res_laps").innerText = `${data.tyre_laps.HARD} кругов`;
             } else {
                 alert("Ошибка бэкенда: " + data.message);
             }
